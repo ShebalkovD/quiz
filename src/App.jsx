@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Game from './components/Game/Game'
+import Result from './components/Result/Result'
 import './index.css'
 
 function App() {
@@ -41,12 +42,14 @@ function App() {
     const [gameIsOver, setGameIsOver] = useState(false)
 
     const handleClick = (answer) => {
-        answer.isCorrect ? setCounter(counter + 1) : console.log('неверно')
-
+        if (answer.isCorrect) {
+            setCounter(counter + 1)
+        }
         let nextQuestionId = currentQuestion.id + 1
         if (nextQuestionId < questionList.length) {
             setCurrentQuestion(questionList[nextQuestionId])
-            setProgress(100 / questionList.length * (currentQuestion.id + 1))
+            let newProgress = 100 / questionList.length * (currentQuestion.id + 1)
+            setProgress(newProgress)
         }else {
             setGameIsOver(true)
         }
@@ -55,8 +58,8 @@ function App() {
     return (
     <div className="container">
         <div className="quiz">
-            {!gameIsOver && <Game progress={progress} currentQuestion={currentQuestion} handleClick={handleClick}/>}
-            {gameIsOver && <div>верных ответов: {counter}</div>}
+            {!gameIsOver && <Game progress={progress} currentQuestion={currentQuestion} handleClick={handleClick} />}
+            {gameIsOver && <Result counter={counter} />}
         </div>
     </div>
     )
