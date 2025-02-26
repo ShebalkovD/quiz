@@ -8,33 +8,30 @@ function App() {
             id: 0,
             text: 'Кто съел колобка?',
             answers: [
-                {id:1, name:'Волк'},
-                {id:2, name:'Лиса'},
-                {id:3, name:'Медведь'}
-            ], 
-            correct: 2
+                {id:1, name:'Волк', isCorrect: false},
+                {id:2, name:'Лиса', isCorrect: true},
+                {id:3, name:'Медведь', isCorrect: false}
+            ]
         },
 
         {
             id: 1,
             text: 'Что больше?',
             answers: [
-                {id:1, name:'см'},
-                {id:2, name:'мм'},
-                {id:3, name:'дм'}
-            ], 
-            correct: 3
+                {id:1, name:'см', isCorrect: false},
+                {id:2, name:'мм', isCorrect: false},
+                {id:3, name:'дм', isCorrect: true}
+            ]
         },
         
         {
             id: 2,
             text: 'Кто тут лишний?',
             answers: [
-                {id:1, name:'Огурец'},
-                {id:2, name:'Апельсин'},
-                {id:3, name:'Яблоко'}
+                {id:1, name:'Огурец', isCorrect: true},
+                {id:2, name:'Апельсин', isCorrect: false},
+                {id:3, name:'Яблоко', isCorrect: false}
             ], 
-            correct: 1
         }
     ]
 
@@ -44,7 +41,7 @@ function App() {
     const [gameIsOver, setGameIsOver] = useState(false)
 
     const handleClick = (answer) => {
-        answer.id == currentQuestion.correct ? setCounter(counter + 1) : console.log('неверно')
+        answer.isCorrect ? setCounter(counter + 1) : console.log('неверно')
 
         let nextQuestionId = currentQuestion.id + 1
         if (nextQuestionId < questionList.length) {
