@@ -21,9 +21,10 @@
     padding: 1rem;
     margin-top: 0.5rem;
     border-radius: 0.6rem;
+    transition: border-color 0.1s ease-in-out;
 }
 
 .answer:hover {
-    border: 1px solid #1cb7ff;
+    border-color: #1cb7ff;
     cursor: pointer;
 }

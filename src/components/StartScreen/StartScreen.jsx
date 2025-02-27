@@ -1,4 +1,5 @@
 import classes from './StartScreen.module.css'
+import { Link } from "react-router"
 import cat_img from '../../assets/Кот играет в викторину.svg'
 import arrow_icon from '../../assets/arrow.svg'
 import plus_icon from '../../assets/plus.svg'
@@ -7,14 +8,14 @@ export default function StartScreen() {
     return (
         <div className={classes.container}>
             <div className={classes.btn_wrapper}>
-                <a href="" className={classes.btn}>
+                <Link to="" className={classes.btn}>
                     <span>Добавить викторину</span>
                     <img src={plus_icon} alt="plus" />
-                </a>
-                <a href="" className={classes.btn}>
+                </Link>
+                <Link to="/quiz" className={classes.btn}>
                     <span>Начать</span>
                     <img src={arrow_icon} alt="arrow" />
-                </a>
+                </Link>
             </div>
             <img src={cat_img} alt="" className={classes.img} />
         </div>

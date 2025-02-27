@@ -1,6 +1,7 @@
 import classes from './Game.module.css'
 
 export default function Game({progress, currentQuestion, handleClick}) {
+
     return (
     <>
         <div className={classes.progressbar} style={{width: `${progress}%`}}></div>
