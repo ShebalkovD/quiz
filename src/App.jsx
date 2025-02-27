@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Game from './components/Game/Game'
 import Result from './components/Result/Result'
+import StartScreen from './components/StartScreen/StartScreen'
 import './index.css'
 
 function App() {
@@ -64,10 +65,11 @@ function App() {
 
     return (
     <div className="container">
-        <div className="quiz">
+        {/* <div className="quiz">
             {!gameIsOver && <Game progress={progress} currentQuestion={currentQuestion} handleClick={handleClick} />}
             {gameIsOver && <Result counter={counter} handleClick={restart} />}
-        </div>
+        </div> */}
+        <StartScreen />
     </div>
     )
 }
