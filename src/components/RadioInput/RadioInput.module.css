@@ -1,0 +1,19 @@
+.input {
+    appearance: none;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border: 1px solid rgb(227, 227, 227);
+    transition: 0.2s background-color linear;
+
+    transform: translateY(-0.5rem);
+}
+
+.input:checked {
+    background-color: #1cb7ff;
+}
+
+.input:hover {
+    cursor: pointer;
+}

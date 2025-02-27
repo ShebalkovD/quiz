@@ -8,7 +8,7 @@ export default function StartScreen() {
     return (
         <div className={classes.container}>
             <div className={classes.btn_wrapper}>
-                <Link to="" className={classes.btn}>
+                <Link to="/create" className={classes.btn}>
                     <span>Добавить викторину</span>
                     <img src={plus_icon} alt="plus" />
                 </Link>
