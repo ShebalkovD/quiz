@@ -55,11 +55,18 @@ function App() {
         }
     }
 
+    const restart = () => {
+        setCurrentQuestion(questionList[0])
+        setCounter(0)
+        setProgress(100 / questionList.length * 0.1)
+        setGameIsOver(false)
+    }
+
     return (
     <div className="container">
         <div className="quiz">
             {!gameIsOver && <Game progress={progress} currentQuestion={currentQuestion} handleClick={handleClick} />}
-            {gameIsOver && <Result counter={counter} />}
+            {gameIsOver && <Result counter={counter} handleClick={restart} />}
         </div>
     </div>
     )
