@@ -15,14 +15,23 @@ export default function Input({label, inputName, defaultValue, value, handleInpu
         } 
     }
 
+    
     return(
         <>
         <label className={classes.labelwrapper}>
             <p className={classes.text}>
-            {label} 
-            {hasError && <span style={{color:'rgb(198, 0, 0)'}}> *</span>}
+                {label} 
+                {hasError && <span style={{color:'rgb(198, 0, 0)'}}> *</span>}
             </p>
-            <input className={classes.input} type="text" name={inputName} defaultValue={defaultValue} value={value} onChange={handleInput} onBlur={handleBlur}/>   
+            <input 
+                className={classes.input} 
+                type="text" 
+                name={inputName} 
+                defaultValue={defaultValue} 
+                value={value} 
+                onChange={handleInput} 
+                onBlur={handleBlur}
+            />   
         </label>
         </>
     )
