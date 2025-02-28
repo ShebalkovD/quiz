@@ -7,9 +7,9 @@ const questionList = [
         id: 0,
         text: 'Кто съел колобка?',
         answers: [
-            {id:1, name:'Волк', isCorrect: false},
-            {id:2, name:'Лиса', isCorrect: true},
-            {id:3, name:'Медведь', isCorrect: false}
+            {id:1, value:'Волк', isCorrect: false},
+            {id:2, value:'Лиса', isCorrect: true},
+            {id:3, value:'Медведь', isCorrect: false}
         ]
     },
 
@@ -17,9 +17,9 @@ const questionList = [
         id: 1,
         text: 'Что больше?',
         answers: [
-            {id:1, name:'см', isCorrect: false},
-            {id:2, name:'мм', isCorrect: false},
-            {id:3, name:'дм', isCorrect: true}
+            {id:1, value:'см', isCorrect: false},
+            {id:2, value:'мм', isCorrect: false},
+            {id:3, value:'дм', isCorrect: true}
         ]
     },
     
@@ -27,9 +27,9 @@ const questionList = [
         id: 2,
         text: 'Кто тут лишний?',
         answers: [
-            {id:1, name:'Огурец', isCorrect: true},
-            {id:2, name:'Апельсин', isCorrect: false},
-            {id:3, name:'Яблоко', isCorrect: false}
+            {id:1, value:'Огурец', isCorrect: true},
+            {id:2, value:'Апельсин', isCorrect: false},
+            {id:3, value:'Яблоко', isCorrect: false}
         ], 
     }
 ]

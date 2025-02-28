@@ -9,6 +9,7 @@ export default function CreateScreen() {
 
     const [quizName, setQuizName] = useState('Все сорта рябины...')
     const [questionIsEditing, setQuestionIsEditing] = useState(false)
+    const [questionList, setQuestionList] = useState([])
 
     const handleNameInput = (event) => {
         setQuizName(event.target.value)
@@ -16,6 +17,23 @@ export default function CreateScreen() {
 
     const handleAddButton = () => {
         setQuestionIsEditing(true)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        let data = new FormData(event.target)
+        let newQuestion = {}
+        newQuestion.id = questionList.length + 1
+        newQuestion.text = data.get('question')
+        newQuestion.answers = [
+            {id: 1, value: data.get('answer1'), getId() {return this.id}},
+            {id: 2, value: data.get('answer2'), getId() {return this.id}},
+            {id: 3, value: data.get('answer3'), getId() {return this.id}}
+        ]
+        newQuestion.answers.forEach(answer => {
+            answer.isCorrect == data.get('correct')
+        })
+        setQuestionList([...questionList, newQuestion])
     }
 
     return(
@@ -32,8 +50,23 @@ export default function CreateScreen() {
                     <Button handleClick={handleAddButton}>Добавить вопрос</Button>
                 </div>
 
-                {questionIsEditing && <CreateForm />}
+                {questionIsEditing && <CreateForm handleSubmit={handleSubmit} />}
+                
+                {questionList.length > 0 && (
+                    <div>
+                        <h1 className={classes.title}>Вопросы</h1>
+                        <ul className={classes.list}>
+                            {questionList.map(question => (
+                                <li key={question.id} className={classes.question}>
+                                    {question.id}. {question.text}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
            </main>
+
+
         </div>
     )
 }

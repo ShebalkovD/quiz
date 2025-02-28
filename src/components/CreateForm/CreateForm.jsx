@@ -3,17 +3,7 @@ import Input from '../Input/Input'
 import RadioInput from '../RadioInput/RadioInput'
 import Button from '../Button/Button'
 
-export default function CreateForm() {
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        const data = new FormData(event.target)
-        console.log(data.get('correct')) // Получить по ключу
-
-        // Перебрать все значения
-        // for (const [key, value] of data) {
-        //     console.log(key, value)
-        // }
-    }
+export default function CreateForm({handleSubmit}) {
 
     return(
         <form action="" className={classes.form} onSubmit={handleSubmit}>

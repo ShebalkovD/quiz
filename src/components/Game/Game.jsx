@@ -9,7 +9,7 @@ export default function Game({progress, currentQuestion, handleClick}) {
         <ul>
             {currentQuestion.answers.map(answer => (
                 <li key={answer.id}>
-                    <button className={classes.answer} onClick={() => handleClick(answer)}>{answer.name}</button>
+                    <button className={classes.answer} onClick={() => handleClick(answer)}>{answer.value}</button>
                 </li>
             ))}
         </ul>
