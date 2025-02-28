@@ -16,8 +16,18 @@
     border-radius: 0.5rem;
     width: 100%;
     min-width: 30rem;
+    color: rgb(112, 112, 112);
 }
 
 .input:focus {
+    border-color: #1cb7ff;
+}
+
+.error {
+    border-color: rgb(198, 0, 0);
+    position: relative;
+}
+
+.filled {
     border-color: #1cb7ff;
 }
