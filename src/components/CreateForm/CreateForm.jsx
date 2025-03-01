@@ -7,16 +7,16 @@ import Button from '../Button/Button'
 export default function CreateForm({questionList, addQuestion}) {
     const [radioValue, setRadioValue] = useState(1)
     const [quizQuestion, setQuizQuestion] = useState('')
-    // const [quizQuestionError, setQuizQuestionError] = useState(false)
+    const [quizQuestionError, setQuizQuestionError] = useState(false)
 
     const [quizAnswer1, setQuizAnswer1] = useState('')
-    // const [quizAnswer1Error, setQuizAnswer1Error] = useState(false)
+    const [quizAnswer1Error, setQuizAnswer1Error] = useState(false)
 
     const [quizAnswer2, setQuizAnswer2] = useState('')
-    // const [quizAnswer2Error, setQuizAnswer2Error] = useState(false)
+    const [quizAnswer2Error, setQuizAnswer2Error] = useState(false)
 
     const [quizAnswer3, setQuizAnswer3] = useState('')
-    // const [quizAnswer3Error, setQuizAnswer3Error] = useState(false)
+    const [quizAnswer3Error, setQuizAnswer3Error] = useState(false)
 
     const handleChange = (event) => {
         setRadioValue(event.target.value)
@@ -35,7 +35,6 @@ export default function CreateForm({questionList, addQuestion}) {
 
     const handleSubmit = useCallback((event) => {
         event.preventDefault()
-        console.log(event)
 
         let hasError = false
         let form_data = new FormData(event.target)
@@ -43,29 +42,25 @@ export default function CreateForm({questionList, addQuestion}) {
         for (const [key, value] of form_data) {
             data[key] = value
             if (value.length <= 0) {
-                console.log('ошибка')
                 hasError = true
-                // switch (value) {
-                //     case quizQuestion:
-                //         setQuizQuestionError(true)
-                //         break;
-                //     case quizAnswer1:
-                //         setQuizAnswer1Error(true)
-                //         break;
-                //     case quizAnswer2:
-                //         setQuizAnswer1Error(true)
-                //         break;
-                //     case quizAnswer3:
-                //         setQuizAnswer1Error(true)
-                //         break;
-                //     default:
-                //         break;
-                // }
+                switch (key) {
+                    case 'question':
+                        setQuizQuestionError(true)
+                        break;
+                    case 'answer1':
+                        setQuizAnswer1Error(true)
+                        break;
+                    case 'answer2':
+                        setQuizAnswer2Error(true)
+                        break;
+                    case 'answer3':
+                        setQuizAnswer3Error(true)
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-
-        console.log(data)
-
         if (!hasError) {
             let newQuestion = {}
             newQuestion.id = questionList.length + 1
@@ -91,6 +86,7 @@ export default function CreateForm({questionList, addQuestion}) {
                 value={quizQuestion} 
                 handleInput={(event) => {handleInput(event, setQuizQuestion)}}
                 error={quizQuestionError}
+                setError={setQuizQuestionError}
             />
 
             <div className={classes.form_text}>
@@ -109,6 +105,8 @@ export default function CreateForm({questionList, addQuestion}) {
                     inputName="answer1" 
                     value={quizAnswer1} 
                     handleInput={(event) => {handleInput(event, setQuizAnswer1)}}
+                    error={quizAnswer1Error}
+                    setError={setQuizAnswer1Error}
                 />
             </div>
             <div className={classes.wrapper}>
@@ -124,6 +122,8 @@ export default function CreateForm({questionList, addQuestion}) {
                     inputName="answer2" 
                     value={quizAnswer2} 
                     handleInput={(event) => {handleInput(event, setQuizAnswer2)}}
+                    error={quizAnswer2Error}
+                    setError={setQuizAnswer2Error}
                 />
             </div>
             <div className={classes.wrapper}>
@@ -139,6 +139,8 @@ export default function CreateForm({questionList, addQuestion}) {
                     inputName="answer3" 
                     value={quizAnswer3} 
                     handleInput={(event) => {handleInput(event, setQuizAnswer3)}}
+                    error={quizAnswer3Error}
+                    setError={setQuizAnswer3Error}
                 />
             </div>
 
