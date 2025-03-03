@@ -28,3 +28,11 @@
     border-color: rgb(28, 183, 255);
     color: rgb(28, 183, 255);
 }
+
+.btn:disabled {
+    background-color: rgb(180, 180, 180);
+}
+
+.btn:disabled:hover {
+    transform: none;
+}

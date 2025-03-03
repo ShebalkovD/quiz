@@ -6,6 +6,9 @@
 
 .header {
     margin-bottom: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .title {

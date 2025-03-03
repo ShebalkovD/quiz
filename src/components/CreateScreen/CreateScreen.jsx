@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react'
-import { Link } from 'react-router'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router'
 import classes from './CreateScreen.module.css'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
@@ -12,6 +12,9 @@ export default function CreateScreen() {
     const [editFormOpen, setEditFormOpen] = useState(false)
     const [questionList, setQuestionList] = useState([])
     const [questionToEdit, setQuestionToEdit] = useState({})
+    const [quizNameError, setQuizNameError] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleNameInput = (event) => {
         setQuizName(event.target.value)
@@ -56,18 +59,47 @@ export default function CreateScreen() {
         )
         setQuestionToEdit({})
     }
+    
+    const handleCreateQuiz = () => {
+        const quiz = {}
+        let quizList = window.localStorage.getItem('quizList')
+        if (quizList == null) {
+            quiz.id = 1 
+            quizList = []
+        }else {
+            quizList = JSON.parse(quizList)
+            quiz.id = quizList.length + 1
+        }
+        quiz.name = quizName
+        quiz.questions = questionList
+        quizList.push(quiz)
+        window.localStorage.setItem('quizList', JSON.stringify(quizList))
+        navigate('/')
+    }
 
     return(
         <div className={classes.container}>
            <header className={classes.header}>
                 <Link to="/">Назад</Link>
+                <Button 
+                    disabledCondition={questionList.length <= 0 || quizName.length <= 0}
+                    handleClick={handleCreateQuiz}
+                >
+                    Создать
+                </Button>
            </header>
 
            <main>
                 <h1 className={classes.title}>Создать викторину</h1>
 
                 <div className={classes.form_block_wrapper}>
-                    <Input label="Название викторины" inputName="name" handleInput={handleNameInput} value={quizName}/>
+                    <Input 
+                        label="Название викторины" 
+                        inputName="name" 
+                        handleInput={handleNameInput} 
+                        value={quizName}
+                        setError={setQuizNameError}
+                    />
                     <Button handleClick={() => handleCreateForm(true)}>Добавить вопрос</Button>
                 </div>
                 
