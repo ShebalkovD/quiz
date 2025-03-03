@@ -4,7 +4,7 @@ import Input from '../Input/Input'
 import RadioInput from '../RadioInput/RadioInput'
 import Button from '../Button/Button'
 
-export default function CreateForm({questionList, addQuestion}) {
+export default function CreateForm({questionList, addQuestion, setFormState}) {
     const [radioValue, setRadioValue] = useState(1)
     const [quizQuestion, setQuizQuestion] = useState('')
     const [quizQuestionError, setQuizQuestionError] = useState(false)
@@ -75,7 +75,9 @@ export default function CreateForm({questionList, addQuestion}) {
             })
             addQuestion(newQuestion)
             clearInputs()
+            setFormState(false)
         }
+
     })
 
     return(

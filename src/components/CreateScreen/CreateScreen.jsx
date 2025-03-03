@@ -8,17 +8,22 @@ import CreateForm from '../CreateForm/CreateForm'
 export default function CreateScreen() {
 
     const [quizName, setQuizName] = useState('Все сорта рябины...')
-    const [questionIsEditing, setQuestionIsEditing] = useState(false)
+    const [createFormOpen, setCreateFormOpen] = useState(false)
     const [questionList, setQuestionList] = useState([])
 
     const handleNameInput = (event) => {
         setQuizName(event.target.value)
     } 
-    const handleAddButton = () => {
-        setQuestionIsEditing(true)
+    const handleCreateForm = (value) => {
+        setCreateFormOpen(value)
     }
     const addQuestion = (newQuestion) => {
         setQuestionList([...questionList, newQuestion])
+    }
+    const deleteQuestion = (id) => {
+        setQuestionList(
+            questionList.filter(question => question.id != id)
+        )
     }
 
     return(
@@ -32,18 +37,22 @@ export default function CreateScreen() {
 
                 <div className={classes.form_block_wrapper}>
                     <Input label="Название викторины" inputName="name" handleInput={handleNameInput} value={quizName}/>
-                    <Button handleClick={handleAddButton}>Добавить вопрос</Button>
+                    <Button handleClick={() => handleCreateForm(true)}>Добавить вопрос</Button>
                 </div>
                 
-                {questionIsEditing && <CreateForm questionList={questionList} addQuestion={addQuestion} />}
+                {createFormOpen && <CreateForm questionList={questionList} addQuestion={addQuestion} setFormState={handleCreateForm} />}
 
                 {questionList.length > 0 && (
-                    <div>
+                    <div style={{marginTop: '4rem'}}>
                         <h1 className={classes.title}>Вопросы</h1>
                         <ul className={classes.list}>
-                            {questionList.map(question => (
-                                <li key={question.id} className={classes.question}>
-                                    {question.id}. {question.text}
+                            {questionList.map((question, index) => (
+                                <li key={index} className={classes.question}>
+                                    <span>{question.id}. {question.text}</span>
+                                    <div>
+                                        <button className={`${classes.tr_btn} ${classes.edit}`}>Изменить</button>
+                                        <button onClick={() => deleteQuestion(question.id)} className={`${classes.tr_btn} ${classes.delete}`}>Удалить</button>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

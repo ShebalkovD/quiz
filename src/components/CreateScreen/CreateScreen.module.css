@@ -10,7 +10,7 @@
 
 .title {
     font-size: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .form_block_wrapper {
@@ -25,10 +25,40 @@
 }
 
 .question {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     animation: fadeUp 0.5s ease-in-out forwards;
+    padding: 1rem;
+    background-color: rgb(249, 249, 249);
+    border-radius: 1rem;
 }
+
+.tr_btn {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(227, 227, 227);
+    color: rgb(227, 227, 227);
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.1s ease-in-out;
+}
+
+.tr_btn.delete:hover {
+    border-color: rgb(198, 0, 0);
+    color: rgb(198, 0, 0);
+    cursor: pointer;
+}
+
+.tr_btn.edit:hover {
+    border-color: #1cb7ff;
+    color: #1cb7ff;
+    cursor: pointer;
+}
+
+
 
 @keyframes fadeUp {
     0% {
