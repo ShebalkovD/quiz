@@ -79,8 +79,8 @@ export default function CreateScreen() {
                         <h1 className={classes.title}>Вопросы</h1>
                         <ul className={classes.list}>
                             {questionList.map((question, index) => (
-                                <li key={index} className={classes.question}>
-                                    <span>{question.id}. {question.text}</span>
+                                <li key={question.id} className={classes.question}>
+                                    <span>{index + 1}. {question.text}</span>
                                     <div>
                                         <button onClick={() => handleEditQuestion(question.id)} className={`${classes.tr_btn} ${classes.edit}`}>Изменить</button>
                                         <button onClick={() => deleteQuestion(question.id)} className={`${classes.tr_btn} ${classes.delete}`}>Удалить</button>
