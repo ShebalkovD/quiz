@@ -1,10 +1,10 @@
 import classes from './CreateForm.module.css'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Input from '../Input/Input'
 import RadioInput from '../RadioInput/RadioInput'
 import Button from '../Button/Button'
 
-export default function CreateForm({questionList, addQuestion, setFormState}) {
+export default function CreateForm({questionList, addQuestion, setFormState, mode, editQuestion, questionToEdit}) {
     const [radioValue, setRadioValue] = useState(1)
     const [quizQuestion, setQuizQuestion] = useState('')
     const [quizQuestionError, setQuizQuestionError] = useState(false)
@@ -62,23 +62,56 @@ export default function CreateForm({questionList, addQuestion, setFormState}) {
             }
         }
         if (!hasError) {
-            let newQuestion = {}
-            newQuestion.id = questionList.length + 1
-            newQuestion.text = data.question
-            newQuestion.answers = [
-                {id: 1, value: data.answer1, getId() {return this.id}},
-                {id: 2, value: data.answer2, getId() {return this.id}},
-                {id: 3, value: data.answer3, getId() {return this.id}}
-            ]
-            newQuestion.answers.forEach(answer => {
-                answer.isCorrect == data.correct
-            })
-            addQuestion(newQuestion)
+            if (mode == 'create') {
+                let newQuestion = {}
+                newQuestion.id = questionList.length + 1
+                newQuestion.text = data.question
+                newQuestion.answers = [
+                    {id: 1, value: data.answer1, getId() {return this.id}},
+                    {id: 2, value: data.answer2, getId() {return this.id}},
+                    {id: 3, value: data.answer3, getId() {return this.id}}
+                ]
+                newQuestion.correct = data.correct
+                newQuestion.answers.forEach(answer => {
+                    answer.isCorrect = answer.id == data.correct
+                })
+                console.log(newQuestion)
+                addQuestion(newQuestion)
+            }
+            if (mode == 'edit') {
+                // Собрать новый вопрос и прокинуть в колбек
+                let newQuestion = {}
+                newQuestion.id = questionToEdit.id
+                newQuestion.text = data.question
+                newQuestion.answers = [
+                    {id: 1, value: data.answer1, getId() {return this.id}},
+                    {id: 2, value: data.answer2, getId() {return this.id}},
+                    {id: 3, value: data.answer3, getId() {return this.id}}
+                ]
+                newQuestion.correct = data.correct
+                newQuestion.answers.forEach(answer => {
+                    answer.isCorrect = answer.id == data.correct
+                })
+                console.log(newQuestion)
+                editQuestion(newQuestion)
+            }
             clearInputs()
             setFormState(false)
         }
 
     })
+
+    useEffect(() => {
+        if (mode == 'edit') {
+            setQuizQuestion(questionToEdit.text)
+            setQuizAnswer1(questionToEdit.answers[0].value)
+            setQuizAnswer2(questionToEdit.answers[1].value)
+            setQuizAnswer3(questionToEdit.answers[2].value)
+            setRadioValue(questionToEdit.correct)
+        }
+    }, [])
+
+    
 
     return(
         <form action="" className={classes.form} onSubmit={handleSubmit}>

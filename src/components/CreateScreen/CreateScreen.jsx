@@ -9,13 +9,20 @@ export default function CreateScreen() {
 
     const [quizName, setQuizName] = useState('Все сорта рябины...')
     const [createFormOpen, setCreateFormOpen] = useState(false)
+    const [editFormOpen, setEditFormOpen] = useState(false)
     const [questionList, setQuestionList] = useState([])
+    const [questionToEdit, setQuestionToEdit] = useState({})
 
     const handleNameInput = (event) => {
         setQuizName(event.target.value)
     } 
     const handleCreateForm = (value) => {
         setCreateFormOpen(value)
+        setEditFormOpen(false)
+    }
+    const handleEditForm = (value) => {
+        setEditFormOpen(value)
+        setCreateFormOpen(false)
     }
     const addQuestion = (newQuestion) => {
         setQuestionList([...questionList, newQuestion])
@@ -24,6 +31,30 @@ export default function CreateScreen() {
         setQuestionList(
             questionList.filter(question => question.id != id)
         )
+    }
+    const handleEditQuestion = (id) => {
+        handleEditForm(true)
+        setQuestionToEdit(...questionList.filter(question => question.id == id))
+    }
+    const editQuestion = (editedQuestion) => {
+        setQuestionList(
+            questionList.map(question => {
+                if (question.id == editedQuestion.id) {
+                    question.text = editedQuestion.text
+                    question.answers[0].value = editedQuestion.answers[0].value
+                    question.answers[0].isCorrect = editedQuestion.answers[0].isCorrect
+                    question.answers[1].value = editedQuestion.answers[1].value
+                    question.answers[1].isCorrect = editedQuestion.answers[1].isCorrect
+                    question.answers[2].value = editedQuestion.answers[2].value
+                    question.answers[2].isCorrect = editedQuestion.answers[2].isCorrect
+
+                    question.correct = editedQuestion.correct
+                }
+
+                return question
+            })
+        )
+        setQuestionToEdit({})
     }
 
     return(
@@ -40,7 +71,8 @@ export default function CreateScreen() {
                     <Button handleClick={() => handleCreateForm(true)}>Добавить вопрос</Button>
                 </div>
                 
-                {createFormOpen && <CreateForm questionList={questionList} addQuestion={addQuestion} setFormState={handleCreateForm} />}
+                {createFormOpen && <CreateForm questionList={questionList} addQuestion={addQuestion} setFormState={handleCreateForm} mode="create"/>}
+                {editFormOpen && <CreateForm  setFormState={handleEditForm} editQuestion={editQuestion} questionToEdit={questionToEdit} mode="edit"/>}
 
                 {questionList.length > 0 && (
                     <div style={{marginTop: '4rem'}}>
@@ -50,7 +82,7 @@ export default function CreateScreen() {
                                 <li key={index} className={classes.question}>
                                     <span>{question.id}. {question.text}</span>
                                     <div>
-                                        <button className={`${classes.tr_btn} ${classes.edit}`}>Изменить</button>
+                                        <button onClick={() => handleEditQuestion(question.id)} className={`${classes.tr_btn} ${classes.edit}`}>Изменить</button>
                                         <button onClick={() => deleteQuestion(question.id)} className={`${classes.tr_btn} ${classes.delete}`}>Удалить</button>
                                     </div>
                                 </li>
