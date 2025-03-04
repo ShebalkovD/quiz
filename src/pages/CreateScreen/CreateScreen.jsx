@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import classes from './CreateScreen.module.css'
-import Input from '../Input/Input'
-import Button from '../Button/Button'
-import CreateForm from '../CreateForm/CreateForm'
+import Input from '../../components/Input/Input'
+import Button from '../../components/Button/Button'
+import CreateForm from '../../components/CreateForm/CreateForm'
 
 export default function CreateScreen() {
 

@@ -20,7 +20,7 @@
 }
 
 .input:focus {
-    border-color: #1cb7ff;
+    border-color: #01326a;
 }
 
 .error {
@@ -29,5 +29,5 @@
 }
 
 .filled {
-    border-color: #1cb7ff;
+    border-color: #01326a;
 }

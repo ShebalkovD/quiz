@@ -12,7 +12,7 @@ export default function StartScreen() {
                     <span>Добавить викторину</span>
                     <img src={plus_icon} alt="plus" />
                 </Link>
-                <Link to="/quiz" className={classes.btn}>
+                <Link to="/pick" className={classes.btn}>
                     <span>Начать</span>
                     <img src={arrow_icon} alt="arrow" />
                 </Link>
