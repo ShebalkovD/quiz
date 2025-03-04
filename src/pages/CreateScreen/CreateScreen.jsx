@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router'
 import classes from './CreateScreen.module.css'
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
+import EditButton from '../../components/EditButton/EditButton'
+import DeleteButton from '../../components/DeleteButton/DeleteButton'
 import CreateForm from '../../components/CreateForm/CreateForm'
 
 export default function CreateScreen() {
@@ -113,9 +115,9 @@ export default function CreateScreen() {
                             {questionList.map((question, index) => (
                                 <li key={question.id} className={classes.question}>
                                     <span>{index + 1}. {question.text}</span>
-                                    <div>
-                                        <button onClick={() => handleEditQuestion(question.id)} className={`${classes.tr_btn} ${classes.edit}`}>Изменить</button>
-                                        <button onClick={() => deleteQuestion(question.id)} className={`${classes.tr_btn} ${classes.delete}`}>Удалить</button>
+                                    <div className={classes.btn_wrapper}>
+                                        <EditButton handleClick={() => handleEditQuestion(question.id)} />
+                                        <DeleteButton handleClick={() => deleteQuestion(question.id)} />
                                     </div>
                                 </li>
                             ))}
