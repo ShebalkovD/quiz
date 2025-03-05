@@ -1,5 +1,5 @@
-import Result from '../Result/Result'
-import Game from '../Game/Game'
+import Result from '../../components/Result/Result'
+import Game from '../../components/Game/Game'
 import { useState, useEffect } from 'react'
 
 
@@ -11,7 +11,6 @@ export default function Quiz() {
     const [counter, setCounter] = useState(0)
     const [gameIsOver, setGameIsOver] = useState(false)
     
-   
     const handleClick = (answer) => {
         if (answer.isCorrect) {
             setCounter(counter + 1)
@@ -25,8 +24,6 @@ export default function Quiz() {
             setGameIsOver(true)
         }
     }
-
-    
 
     const restart = () => {
         setCurrentQuestion(questionList[0])

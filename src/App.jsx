@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router'
 
-import Quiz from './components/Quiz/Quiz'
+import Quiz from './pages/Quiz/Quiz'
 import StartScreen from './pages/StartScreen/StartScreen'
 import CreateScreen from './pages/CreateScreen/CreateScreen'
 import PickScreen from './pages/PickScreen/PickScreen'
