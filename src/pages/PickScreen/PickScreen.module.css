@@ -33,6 +33,7 @@
 
 .quiz_item_link {
     display: block;
+    text-align: left;
     width: 100%;
     border: 2px solid #01326a;
     text-decoration: none;
