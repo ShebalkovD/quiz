@@ -1,6 +1,6 @@
 import Result from '../../components/Result/Result'
 import Game from '../../components/Game/Game'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 export default function Quiz() {
@@ -33,7 +33,7 @@ export default function Quiz() {
     }
 
     return(
-        <div className="quiz">
+        <div className="quiz page">
             {!gameIsOver && <Game progress={progress} currentQuestion={currentQuestion} handleClick={handleClick} />}
             {gameIsOver && <Result counter={counter} handleClick={restart} />}
         </div>

@@ -33,7 +33,7 @@ export default function PickScreen() {
     }, [quizList])
 
     return (
-        <div className={classes.container}>
+        <div className={`${classes.container} page`}>
             <header className={classes.header}>
                 <Link to='/'>Назад</Link>
             </header>

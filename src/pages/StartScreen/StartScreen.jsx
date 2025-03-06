@@ -6,7 +6,7 @@ import plus_icon from '../../assets/plus.svg'
 
 export default function StartScreen() {
     return (
-        <div className={classes.container}>
+        <div className={`${classes.container} page`}>
             <div className={classes.btn_wrapper}>
                 <Link to="/create" className={classes.btn}>
                     <span>Добавить викторину</span>
