@@ -5,7 +5,12 @@ import { Link, useNavigate } from 'react-router'
 
 const getQuizList = () => {
     const quizList = JSON.parse(window.localStorage.getItem('quizList'))
-    return quizList
+
+    if (quizList != null && quizList != undefined) {
+        return quizList
+    } else {
+        return []
+    }
 }
 
 export default function PickScreen() {
