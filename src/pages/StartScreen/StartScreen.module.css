@@ -40,12 +40,18 @@
 }
 
 .img {
-    width: 30%;
+    width: 50%;
     /* max-width: 40rem; */
     transform: translateY(-2rem);
 }
 
-@media(max-width: 768px) {
+@media (max-width: 1200px) {
+    .img {
+        width: 35%;
+    }
+}
+
+@media (max-width: 768px) {
     .container {
         flex-direction: column-reverse;
         justify-content: center;

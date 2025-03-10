@@ -18,7 +18,7 @@
 
 .form {
     background-color: rgb(249, 249, 249);
-    padding: 0.5rem;
+    padding: 2rem;
     border-radius: 1rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -28,6 +28,7 @@
     .form {
         border-radius: 0;
         position: absolute;
+        padding: 0.5rem;
         top: 0;
         left: 0;
         width: 100%;
