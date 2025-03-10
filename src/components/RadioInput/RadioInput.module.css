@@ -6,6 +6,7 @@
 
     border: 1px solid rgb(227, 227, 227);
     transition: 0.2s background-color linear;
+    flex-shrink: 0;
 
     transform: translateY(-0.5rem);
 }

@@ -31,3 +31,13 @@
 .filled {
     border-color: #01326a;
 }
+
+@media (max-width: 768px) {
+    .input {
+        min-width:auto
+    }
+
+    .labelwrapper {
+        width: 100%;
+    }
+}

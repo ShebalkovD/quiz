@@ -21,6 +21,8 @@
     align-items: end;
     justify-content: space-between;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    row-gap: 4rem;
 }
 
 .list {
@@ -82,4 +84,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .title {
+        margin-bottom: 2rem;
+    }
 }
